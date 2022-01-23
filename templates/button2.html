@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+		<body>
+      <div class="jumbotron">
+      <form action="{{ url_for('cal', mz= mz) }}" method="post">
+      	Please input a valid precursor_mz <input type="text" name="precursor_mz"> <input type="Submit" value="Submit">
+      		</form>
+      </div>
+
+	    <div class="jumbotron">
+            <div style="background-color:white;color:black;padding:10px;font-family:verdana;">
+
+              <table style="width:100%">
+               <tr>
+                 <th>id</th>
+                <th>precursor_mz</th>
+                <th>name</th>
+                <th>collision_energy</th>
+                <th>retention_time</th>
+                <th>mass_accuracy</th>
+                <th>mass_error</th>
+              </tr>
+							{% if items %}
+              {% for result in items %}
+              <tr>
+                <td><a href={{ url_for('about', number= result.id) }}>{{result.id}}</a></td>
+                <td>{{result.precursor_mz}}</td>
+                <td>{{result.name}}</td>
+                <td>{{result.collision_energy}}</td>
+                <td>{{result.retention_time}}</td>
+                <td>{{result.mass_accuracy}}</td>
+                <td>{{result.mass_error}}</td>
+             </tr>
+             {% endfor %}
+						 {% endif %}
+           </table>
+         </div>
+         </div>
+
+   </body>
+{% endblock %}

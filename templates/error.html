@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> Please go to home page as there is an error due to {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
